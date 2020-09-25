@@ -49,7 +49,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer = 0;
     }
 
-    public DobbeltLenketListe(T[] a) {
+    public DobbeltLenketListe(T[] a) throws NullPointerException {
+                a = (T[]) new Object [antall];
+
+                if (a == Objects.requireNonNull(a)) {
+                    throw new NullPointerException("Tabellen a er null!");
+                }
 
     }
 
