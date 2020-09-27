@@ -12,6 +12,6 @@ public class Main {
 
         System. out .println(liste2. antall () + " " + liste2. tom ());
 
-        System.out.print(liste.antall() + " " + liste.tom());
+        //System.out.print(liste.antall() + " " + liste.tom());
      }
 }

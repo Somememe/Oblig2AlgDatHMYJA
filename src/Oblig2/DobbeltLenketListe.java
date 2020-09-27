@@ -58,6 +58,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             for (int i = 0; i < a.length; i++) {
                 if (a[i] != null) {
                    hale = hale.neste = new Node(a[i], hale, null);
+                   //hale = hale.forrige = new Node()
+                    antall++;
                 }
 
             }
