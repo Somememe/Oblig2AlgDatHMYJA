@@ -124,12 +124,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+
+
+
+
+
+
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+
+
+
+
+
+
+        return null;
+
     }
 
     @Override
