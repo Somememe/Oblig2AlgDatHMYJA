@@ -101,7 +101,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "Ikke lov med null-verdier");
-        throw new UnsupportedOperationException();
+        //indeksKontroll(indeks, true);
+        if (indeks == 0) {
+            hode = new Node<>(verdi, hode, hode);
+            if (antall == 0) {
+                hale = hode;
+            }
+        } else if(indeks == antall) {
+            hale = hale.neste = new Node<>(verdi, null, null);
+        } else {
+            Node<T> p = hode;
+            for (int i = 1; i < indeks; i++) {
+                p = p.neste;
+                p.neste = new Node<>(verdi, null, p.neste);
+            }
+            antall++;
+        }
+        //throw new UnsupportedOperationException();
     }
 
     @Override
@@ -199,6 +215,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
+
             throw new UnsupportedOperationException();
         }
 
