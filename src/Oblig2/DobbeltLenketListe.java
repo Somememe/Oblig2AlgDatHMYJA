@@ -100,6 +100,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
+        Objects.requireNonNull(verdi, "Ikke lov med null-verdier");
         throw new UnsupportedOperationException();
     }
 
