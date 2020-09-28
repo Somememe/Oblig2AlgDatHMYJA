@@ -5,13 +5,17 @@ import Oblig2.Liste;
 
 public class Main {
     public static void main(String[] args) {
-        Liste<String> liste = new DobbeltLenketListe<>();
+        String[] a = {"Hei", "jeg"};
 
-        String[] s = {null};
+        Liste<String> liste = new DobbeltLenketListe<>(a);
+
+        String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
         System. out .println(liste2. antall () + " " + liste2. tom ());
 
-        //System.out.print(liste.antall() + " " + liste.tom());
+        System.out.println(liste.antall() + " " + liste.tom());
+
+        System.out.println(liste.indeksTil("jeg"));
      }
 }
