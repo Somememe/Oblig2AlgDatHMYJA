@@ -67,6 +67,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
+        //hente ut elementer og lage det som en ny lenket liste
+        //må kanskje lage en ny konstruktør
+        //sette hode-peker, hale-peker og antall
         throw new UnsupportedOperationException();
     }
 
@@ -102,6 +105,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "Ikke lov med null-verdier");
         //indeksKontroll(indeks, true);
+
         if (indeks == 0) {
             hode = new Node<>(verdi, hode, hode);
             if (antall == 0) {
@@ -116,6 +120,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 p.neste = new Node<>(verdi, null, p.neste);
             }
             antall++;
+            endringer++;
         }
         //throw new UnsupportedOperationException();
     }
@@ -125,8 +130,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    private Node<T> finnNode(int indeks){
+        //loope fra start av listen til listen du kommer til
+        //lønner seg å starte på slutten dersom du er over halvveis, og loope bakover
+        if (indeks < 0 || indeks >= antall) {
+            return null;
+        }
+        if (indeks < (antall/2)){
+
+        }
+        for (int i = 0; i < indeks; i++) {
+
+        }
+        return finnNode(indeks);
+    }
+
     @Override
     public T hent(int indeks) {
+
         throw new UnsupportedOperationException();
     }
 
@@ -151,6 +172,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
+        //metoden skal erstatte verdien på plass indeks med nyverdi og returnere det som lå der fra før
+        //husk! sjekk indeks, null-verdier skal ikke legges inn, variabelen endringer skal økes
+
         throw new UnsupportedOperationException();
     }
 
