@@ -93,9 +93,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return erTom;
     }
 
+    //Y
     @Override
-    public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+    public boolean leggInn(T verdi) throws UnsupportedOperationException {
+        Objects.requireNonNull(verdi, "Ikke tillatt med null-verdier!");
+
+        if (antall == 0)  hode = hale = new Node<>(verdi, null, null);  // tom liste
+        else hale = hale.neste = new Node<>(verdi, null, null);         // legges bakerst
+
+        antall++;                  // en mer i listen
+        return true;               // vellykket innlegging
+
+        //throw new UnsupportedOperationException();
     }
 
     @Override
@@ -152,11 +161,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    //Y
     @Override
-    public String toString() {
-        throw new UnsupportedOperationException();
+    public String toString() throws UnsupportedOperationException{
+        StringBuilder s = new StringBuilder();
+
+        s.append('[');
+
+        if (!tom())
+        {
+            Node<T> p = hode;
+            s.append(p.verdi);
+
+            p = p.neste;
+
+            while (p != null)  // tar med resten hvis det er noe mer
+            {
+                s.append(',').append(' ').append(p.verdi);
+                p = p.neste;
+            }
+        }
+
+        s.append(']');
+
+        return s.toString();
+
+        //throw new UnsupportedOperationException();
     }
 
+    //Y
     public String omvendtString() {
         throw new UnsupportedOperationException();
     }
