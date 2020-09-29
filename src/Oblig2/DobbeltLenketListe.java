@@ -131,24 +131,28 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private Node<T> finnNode(int indeks){
-        //loope fra start av listen til listen du kommer til
+        //loope fra start av listen
         //lønner seg å starte på slutten dersom du er over halvveis, og loope bakover
-        if (indeks < 0 || indeks >= antall) {
-            return null;
+        Node <T> p;
+        if (indeks > (antall/2)){
+            p = hale;
+            for (int i = antall; i > indeks+1; i--){
+                p = p.forrige;
+            }
+        } else{
+            p = hode;
+            for (int i = 0; i <= indeks; i++) {
+                p = p.neste;
+            }
         }
-        if (indeks < (antall/2)){
-
-        }
-        for (int i = 0; i < indeks; i++) {
-
-        }
-        return finnNode(indeks);
+        return p;
     }
 
     @Override
     public T hent(int indeks) {
-
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        Node <T> p = finnNode(indeks);
+        return p.verdi;
     }
 
     @Override
