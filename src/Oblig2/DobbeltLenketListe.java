@@ -51,19 +51,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe(T[] a) throws NullPointerException {
 
-            Objects.requireNonNull(a, "Tabellen a er null");
-            if(a.length != 0) {
-                hode = hale = new Node<>(a[0], null, null);
+        Objects.requireNonNull(a, "Tabellen a er null");
+        if(a.length != 0) {
+            hode = hale = new Node<>(a[0], null, null);
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != null) {
+                hale = hale.neste = new Node(a[i], hale, null);
+                //hale = hale.forrige = new Node()
+                antall++;
             }
 
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] != null) {
-                   hale = hale.neste = new Node(a[i], hale, null);
-                   //hale = hale.forrige = new Node()
-                    antall++;
-                }
-
-            }
+        }
     }
 
     public Liste<T> subliste(int fra, int til){
