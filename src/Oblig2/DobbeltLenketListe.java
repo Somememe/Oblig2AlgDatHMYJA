@@ -67,6 +67,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
+        //hente ut elementer og lage det som en ny lenket liste
+        //må kanskje lage en ny konstruktør
+        //sette hode-peker, hale-peker og antall
         throw new UnsupportedOperationException();
     }
 
@@ -115,7 +118,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi, "Ikke lov med null-verdier");
+        //indeksKontroll(indeks, true);
+
+        if (indeks == 0) {
+            hode = new Node<>(verdi, hode, hode);
+            if (antall == 0) {
+                hale = hode;
+            }
+        } else if(indeks == antall) {
+            hale = hale.neste = new Node<>(verdi, null, null);
+        } else {
+            Node<T> p = hode;
+            for (int i = 1; i < indeks; i++) {
+                p = p.neste;
+                p.neste = new Node<>(verdi, null, p.neste);
+            }
+            antall++;
+            endringer++;
+        }
+        //throw new UnsupportedOperationException();
     }
 
     @Override
@@ -123,9 +145,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    private Node<T> finnNode(int indeks){
+        //loope fra start av listen
+        //lønner seg å starte på slutten dersom du er over halvveis, og loope bakover
+        Node <T> p;
+        if (indeks > (antall/2)){
+            p = hale;
+            for (int i = antall; i > indeks+1; i--){
+                p = p.forrige;
+            }
+        } else{
+            p = hode;
+            for (int i = 0; i <= indeks; i++) {
+                p = p.neste;
+            }
+        }
+        return p;
+    }
+
     @Override
     public T hent(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        Node <T> p = finnNode(indeks);
+        return p.verdi;
     }
 
     @Override
@@ -149,6 +191,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
+        //metoden skal erstatte verdien på plass indeks med nyverdi og returnere det som lå der fra før
+        //husk! sjekk indeks, null-verdier skal ikke legges inn, variabelen endringer skal økes
+
         throw new UnsupportedOperationException();
     }
 
@@ -259,6 +304,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
+
             throw new UnsupportedOperationException();
         }
 
