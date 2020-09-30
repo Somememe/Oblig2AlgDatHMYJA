@@ -4,13 +4,8 @@ package Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
-import java.util.StringJoiner;
+import java.util.*;
 
-import java.util.Iterator;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 
@@ -66,11 +61,40 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
+
+    private static void fraTilKontroll (int antall, int fra, int til){
+        if (fra < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (til > antall){
+            throw new IndexOutOfBoundsException();
+        }
+        if (fra > til) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     public Liste<T> subliste(int fra, int til){
-        //hente ut elementer og lage det som en ny lenket liste
+        //hente ut elementer og lage det som en ny lenket liste, returnere en liste
         //må kanskje lage en ny konstruktør
         //sette hode-peker, hale-peker og antall
-        throw new UnsupportedOperationException();
+        //sjekke om indekser fra og til er lovlige, om ikke skal det kastes unntak
+        fraTilKontroll(antall,fra,til);
+        antall = 0;
+        Liste<T> liste = null;
+        Node<T> denne = this.hode.neste;
+        Node <T> startNode = denne;
+        while (denne != null) {
+            if (antall > fra && antall < til) {
+                startNode.neste = denne;
+                startNode = startNode.neste;
+            }
+            denne = denne.neste;
+            antall++;
+        }
+        return liste;
+
     }
 
     @Override
