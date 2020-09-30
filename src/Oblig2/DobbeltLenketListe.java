@@ -67,7 +67,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private static void fraTilKontroll (int antall, int fra, int til) throws IndexOutOfBoundsException, IllegalArgumentException{
 
         if (fra < 0 || til > antall) {
-            throw new IndexOutOfBoundsException("Fra er for liten");
+            throw new IndexOutOfBoundsException("Ugyldig fra eller til indeks");
         }
         if (fra > til) {
             throw new IllegalArgumentException("Ugyldig intervall");

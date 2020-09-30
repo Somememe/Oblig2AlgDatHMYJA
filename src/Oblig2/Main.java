@@ -5,6 +5,12 @@ import Oblig2.Liste;
 
 public class Main {
     public static void main(String[] args) {
+        Character[] c = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+        DobbeltLenketListe<Character> liste2 = new DobbeltLenketListe<>(c);
+        System.out.println(liste2.subliste(3,8));
+        System.out.println(liste2.subliste(5,5));
+        System.out.println(liste2.subliste(0,11));
+/*
         String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4 ", "indeks 5", "indeks 6"};
 
         DobbeltLenketListe<String> liste = new DobbeltLenketListe<>(a);
@@ -16,7 +22,7 @@ public class Main {
         for(int i = 0; i<liste.antall(); ++i){
             System.out.println("Verdi: " + liste.hent(i));
         }
-/*
+
         String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
