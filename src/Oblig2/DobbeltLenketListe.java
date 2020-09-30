@@ -64,6 +64,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 antall++;
             }
         }
+
+        Node <T> current = hode;
+
+        for(int i = 0; i<antall; ++i){
+            System.out.println("Current: " + current.verdi);
+            current = current.neste;
+        }
     }
 
     public Liste<T> subliste(int fra, int til){
@@ -176,13 +183,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return -1;
         }
 
-        Node current = hode;
+        Node<T> current = hode;
 
         for(int i = 0; i<antall; ++i){
-            if(current.equals(new Node<>(verdi))){
+            if(current.verdi.equals(verdi)){
                 return i;
             }
-
             current = current.neste;
         }
 

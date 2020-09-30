@@ -5,27 +5,24 @@ import Oblig2.Liste;
 
 public class Main {
     public static void main(String[] args) {
-        String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", null, "indeks 5", "indeks 6"};
+        String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4", "indeks 5", "indeks 6"};
 
-        Liste <Integer> tallListe = new DobbeltLenketListe<>(new Integer[]{null, 1, null, 2, null, 3, null});
 
-        //Liste<String> liste = new DobbeltLenketListe<>(a);
+        Liste<String> liste = new DobbeltLenketListe<>(a);
 
-        System.out.println("Antall: " + tallListe.antall() + " Tomstatus: " + tallListe.tom());
-        System.out.println(tallListe.hent(2));
-
-        /*
+        System.out.println(liste.antall () + " " + liste.tom ());
+/*
         String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
         System.out.println(liste.hent(2));
 
-        System. out .println(liste2. antall () + " " + liste2. tom ());
+
 
         System.out.println(liste.antall() + " " + liste.tom());
+*/
+        System.out.println(liste.indeksTil("indeks 0"));
 
-        System.out.println(liste.indeksTil("jeg"));
-        */
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
         String[] s1 = {"B"};
