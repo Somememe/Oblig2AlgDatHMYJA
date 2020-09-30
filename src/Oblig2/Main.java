@@ -5,10 +5,16 @@ import Oblig2.Liste;
 
 public class Main {
     public static void main(String[] args) {
-        String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4 ", "indeks 5", "indeks 6"};
+        String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", null, "indeks 5", "indeks 6"};
 
-        Liste<String> liste = new DobbeltLenketListe<>(a);
+        Liste <Integer> tallListe = new DobbeltLenketListe<>(new Integer[]{null, 1, null, 2, null, 3, null});
 
+        //Liste<String> liste = new DobbeltLenketListe<>(a);
+
+        System.out.println("Antall: " + tallListe.antall() + " Tomstatus: " + tallListe.tom());
+        System.out.println(tallListe.hent(2));
+
+        /*
         String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
@@ -19,13 +25,13 @@ public class Main {
         System.out.println(liste.antall() + " " + liste.tom());
 
         System.out.println(liste.indeksTil("jeg"));
-
+        */
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-       /* String[] s1 = {"B"};
+/*
+        String[] s1 = {"B"};
         DobbeltLenketListe<String> l1 = new DobbeltLenketListe<>(s1);
         System.out.println(l1.toString() );
-        */
+
 
        //OPPGAVE 2 A
         String[] s1 = {}, s2 = {"A"}, s3 = {null,"A",null,"B",null};
@@ -44,5 +50,6 @@ public class Main {
             liste3.leggInn(i);
             System.out.println(liste3.toString() + " " + liste3.omvendtString());
         }
+*/
     }
 }
