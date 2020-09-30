@@ -182,10 +182,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if(current.equals(new Node<>(verdi))){
                 return i;
             }
-
             current = current.neste;
         }
-
         return -1;
     }
 
@@ -193,8 +191,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T oppdater(int indeks, T nyverdi) {
         //metoden skal erstatte verdien på plass indeks med nyverdi og returnere det som lå der fra før
         //husk! sjekk indeks, null-verdier skal ikke legges inn, variabelen endringer skal økes
-
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi, "Ikke lov med null-verdier");
+        indeksKontroll(indeks, false);
+        Node <T> p = finnNode(indeks);
+        T gammelVerdi = p.verdi;
+        p.verdi = nyverdi;
+        endringer++;
+        return gammelVerdi;
     }
 
     @Override

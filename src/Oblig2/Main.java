@@ -14,6 +14,10 @@ public class Main {
 
         System.out.println(liste.hent(2));
 
+        System.out.println(liste.oppdater(6,a[2]));
+
+        System.out.println(a);
+
         System. out .println(liste2. antall () + " " + liste2. tom ());
 
         System.out.println(liste.antall() + " " + liste.tom());
