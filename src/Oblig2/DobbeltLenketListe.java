@@ -4,10 +4,7 @@ package Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
-import java.util.StringJoiner;
+import java.util.*;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -52,6 +49,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public DobbeltLenketListe(T[] a) throws NullPointerException {
 
         Objects.requireNonNull(a, "Tabellen a er null");
+
         for (int i = 0; i < a.length; i++) {
             if(hode == null && a[i] != null){
                 hode = hale = new Node<>(a[i], null, null);
@@ -65,11 +63,34 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
+
+    private static void fraTilKontroll (int antall, int fra, int til) throws IndexOutOfBoundsException, IllegalArgumentException{
+
+        if (fra < 0 || til > antall) {
+            throw new IndexOutOfBoundsException("Fra er for liten");
+        }
+        if (fra > til) {
+            throw new IllegalArgumentException("Ugyldig intervall");
+        }
+    }
+
+
     public Liste<T> subliste(int fra, int til){
-        //hente ut elementer og lage det som en ny lenket liste
+        //hente ut elementer og lage det som en ny lenket liste, returnere en liste
         //må kanskje lage en ny konstruktør
         //sette hode-peker, hale-peker og antall
-        throw new UnsupportedOperationException();
+        //sjekke om indekser fra og til er lovlige, om ikke skal det kastes unntak
+        fraTilKontroll(antall,fra,til);
+        int subAntall = 0;
+
+        Liste<T> liste = new DobbeltLenketListe<>();
+
+        for (int i = fra; i < til; i++) {
+            liste.leggInn(hent(i));
+            subAntall++;
+        }
+
+        return liste;
     }
 
     @Override
@@ -141,7 +162,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+        return indeksTil(verdi) != -1;
     }
 
     private Node<T> finnNode(int indeks){
@@ -155,7 +176,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
         } else{
             p = hode;
-            for (int i = 0; i <= indeks; i++) {
+            for (int i = 0; i < indeks; i++) {
                 p = p.neste;
             }
         }
@@ -175,16 +196,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return -1;
         }
 
-        Node current = hode;
+        Node<T> current = hode;
 
         for(int i = 0; i<antall; ++i){
-            if(current.equals(new Node<>(verdi))){
+            if(current.verdi.equals(verdi)){
                 return i;
             }
-
             current = current.neste;
         }
-
         return -1;
     }
 
@@ -192,8 +211,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T oppdater(int indeks, T nyverdi) {
         //metoden skal erstatte verdien på plass indeks med nyverdi og returnere det som lå der fra før
         //husk! sjekk indeks, null-verdier skal ikke legges inn, variabelen endringer skal økes
-
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi, "Ikke lov med null-verdier");
+        indeksKontroll(indeks, false);
+        Node <T> p = finnNode(indeks);
+        T gammelVerdi = p.verdi;
+        p.verdi = nyverdi;
+        endringer++;
+        return gammelVerdi;
     }
 
     @Override

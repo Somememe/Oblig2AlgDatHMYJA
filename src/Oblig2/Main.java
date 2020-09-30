@@ -7,12 +7,24 @@ public class Main {
     public static void main(String[] args) {
         String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4 ", "indeks 5", "indeks 6"};
 
-        Liste<String> liste = new DobbeltLenketListe<>(a);
+        DobbeltLenketListe<String> liste = new DobbeltLenketListe<>(a);
 
+        Liste<String> subliste = liste.subliste(0,7);
+
+        System.out.println(subliste);
+
+        for(int i = 0; i<liste.antall(); ++i){
+            System.out.println("Verdi: " + liste.hent(i));
+        }
+/*
         String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
         System.out.println(liste.hent(2));
+
+        System.out.println(liste.oppdater(6,a[2]));
+
+        System.out.println(a);
 
         System. out .println(liste2. antall () + " " + liste2. tom ());
 
@@ -25,7 +37,6 @@ public class Main {
        /* String[] s1 = {"B"};
         DobbeltLenketListe<String> l1 = new DobbeltLenketListe<>(s1);
         System.out.println(l1.toString() );
-        */
 
        //OPPGAVE 2 A
         String[] s1 = {}, s2 = {"A"}, s3 = {null,"A",null,"B",null};
@@ -44,5 +55,6 @@ public class Main {
             liste3.leggInn(i);
             System.out.println(liste3.toString() + " " + liste3.omvendtString());
         }
+*/
     }
 }
