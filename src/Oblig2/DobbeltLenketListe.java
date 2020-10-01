@@ -232,7 +232,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        /*
+        Lag metoden void nullstill(). Den skal «tømme» listen og nulle alt slik at
+        «søppeltømmeren» kan hente alt som ikke lenger brukes. Kod den på to måter
+        og velg den som er mest effektiv (gjør tidsmålinger):
+         */
+
+        /*1.måte:
+          Starte i hodet, går mot hale ved hjelp av pekeren neste.
+        */
+
+        //For hver node "nulles" nodeverdien og alle nodens pekere.
+
+        /*Til slutt:
+          Sett både hode og hale til null, antall til 0 og endringer økes.
+
+          Metoden clear() i klassen LinkedList i Java.
+        */
+
+        /*2.måte:
+          Lag en løkke som inneholder metodekallet fjern(0) (den første
+          noden fjernes) og som går inntil listen er tom.
+         */
     }
 
     //Y
