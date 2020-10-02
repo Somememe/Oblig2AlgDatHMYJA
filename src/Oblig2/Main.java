@@ -15,6 +15,8 @@ public class Main {
 
         DobbeltLenketListe<String> liste = new DobbeltLenketListe<>(a);
 
+
+
         Liste<String> subliste = liste.subliste(0,7);
 
         System.out.println(subliste);
