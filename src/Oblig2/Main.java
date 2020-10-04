@@ -44,5 +44,14 @@ public class Main {
             liste3.leggInn(i);
             System.out.println(liste3.toString() + " " + liste3.omvendtString());
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //OPPGAVE 9
+        DobbeltLenketListe<String> liste4 = new DobbeltLenketListe<>(new String[]
+                        {"Birger","Lars","Anders","Bodil","Kari","Per","Berit"});
+        liste4.fjernHvis(navn -> navn.charAt(0) == 'B'); // fjerner navn som starter med B
+        System.out.println(liste4 + " " + liste4.omvendtString());
+        // Utskrift: [Lars, Anders, Kari, Per] [Per, Kari, Anders, Lars]
     }
 }

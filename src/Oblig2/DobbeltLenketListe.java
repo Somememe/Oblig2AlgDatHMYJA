@@ -310,6 +310,30 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (endringer != iteratorendringer) {
                 throw new ConcurrentModificationException();
             }
+            fjernOK = false;
+
+            if (antall == 1) {
+                hode = null;
+                hale = null;
+            }
+            if (denne == null) {
+                //hale må oppdateres
+            }
+            if (denne.forrige == hode) {
+                //hode må oppdateres
+            }
+           /* if () {
+                //Hvis en node inne i listen skal fjernes (noden denne.forrige), så må pekerne i
+                //nodene på hver side oppdateres.
+            }
+            */
+
+            //fjerne p
+
+            antall--;
+            endringer++;
+            iteratorendringer++;
+
             //throw new UnsupportedOperationException();
         }
 
