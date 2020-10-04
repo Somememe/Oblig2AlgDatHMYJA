@@ -277,7 +277,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     private class DobbeltLenketListeIterator implements Iterator<T>
     {
-        private Node<T> denne;
+        private Node<T> denne; //hode
         private boolean fjernOK;
         private int iteratorendringer;
 
@@ -301,10 +301,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new UnsupportedOperationException();
         }
 
+        //y
         @Override
         public void remove(){
-
-            throw new UnsupportedOperationException();
+            if(!fjernOK) {
+                throw new IllegalStateException();
+            }
+            if (endringer != iteratorendringer) {
+                throw new ConcurrentModificationException();
+            }
+            //throw new UnsupportedOperationException();
         }
 
     } // class DobbeltLenketListeIterator
