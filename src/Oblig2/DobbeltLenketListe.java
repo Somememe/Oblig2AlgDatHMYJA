@@ -200,6 +200,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public boolean fjern(T verdi) {
 
+        boolean slettet = false;
 
 
 
@@ -212,11 +213,37 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) {
 
 
+        Node <T> p = finnNode(indeks);
+        T returverdi;
+
+        //Node <T> c = hale.neste;
+        //Node <T> b = hale.forrige;
+
+        //hode skal fjernes
+        //hode er eneste node
+        // fjerne siste - hale
+        // hvis du skal fjerne en som er midt i lista
+
+       if (p == hode) {
+            if(antall == 1) {
+                returverdi = p.verdi;
+                hode = null;
+                hale = null;
+            }
 
 
+       }
 
+       else if (p == hale) {
 
-        return null;
+       }
+
+       else {
+
+       }
+       endringer++;
+        antall --;
+        return returverdi;
 
     }
 
