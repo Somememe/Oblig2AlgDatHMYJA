@@ -200,20 +200,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public boolean fjern(T verdi) {
 
-        boolean slettet = false;
+        boolean slettet = true;
+
+        if(antall == 0) {
+            throw new IndexOutOfBoundsException("Det er ingenting å fjerne fordi" +
+                    " listen er tom");
+
+        }
+        
 
 
-
-
-
-        return true;
+        return false;
     }
 
     @Override
     public T fjern(int indeks) {
 
-
-        Node <T> p = finnNode(indeks);
         T returverdi;
 
         //Node <T> c = hale.neste;
@@ -224,27 +226,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         // fjerne siste - hale
         // hvis du skal fjerne en som er midt i lista
 
-       if (p == hode) {
+       if (indeks == 0) {
+           returverdi = hode.verdi;
+           hode = hode.neste;
             if(antall == 1) {
-                returverdi = p.verdi;
-                hode = null;
                 hale = null;
             }
-
-
-       }
-
-       else if (p == hale) {
 
        }
 
        else {
 
+        Node <T> p = finnNode(indeks - 1);
+        Node <T> q = p.neste;
+        returverdi = q.verdi;
+
+           if (q == hale) hale = p; {
+               p.neste = q.neste;
+               returverdi = q.verdi;
+
+           }
+
        }
+
        endringer++;
         antall --;
         return returverdi;
-
     }
 
     @Override
