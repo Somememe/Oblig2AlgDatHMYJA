@@ -411,8 +411,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //For løkke som starter med første element i liste og stopper etter nest siste element
         for(int i = 0; i < liste.antall()-1; ++i){
+            T current_maks = liste.hent(i);
             //Finne maks verdi i intervallet [i, liste.antall) ved hjelp av c.compare
+            for(int j = i + 1; j < liste.antall(); ++j) {
 
+            }
             //Bytter plass på maks verdi og elementet på plass i.
         }
     }
