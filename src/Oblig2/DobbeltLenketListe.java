@@ -408,7 +408,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
+
+        //For løkke som starter med første element i liste og stopper etter nest siste element
+        for(int i = 0; i < liste.antall()-1; ++i){
+            //Finne maks verdi i intervallet [i, liste.antall) ved hjelp av c.compare
+
+            //Bytter plass på maks verdi og elementet på plass i.
+        }
     }
 
 } // class DobbeltLenketListe
