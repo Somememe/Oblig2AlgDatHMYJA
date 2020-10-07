@@ -295,18 +295,50 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
-    }
+    public boolean fjern(T verdi) { throw new UnsupportedOperationException(); }
 
     @Override
-    public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
-    }
+    public T fjern(int indeks) { throw new UnsupportedOperationException(); }
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        /*
+        Lag metoden void nullstill(). Den skal «tømme» listen og nulle alt slik at
+        «søppeltømmeren» kan hente alt som ikke lenger brukes. Kod den på to måter
+        og velg den som er mest effektiv (gjør tidsmålinger):
+         */
+
+        // 1.metode:
+        // Får feil på test 7b og 7c.
+
+        Node<T> p = hode;
+        Node<T> q;
+        Node<T> r = hale;
+
+        while (p != null)
+        {
+            q = p.neste;
+            p.verdi = null;
+            p.neste = null;
+            p.forrige = null;
+            p = q;
+        }
+
+        /*Til slutt:
+          Sett både hode og hale til null, antall til 0 og endringer økes.
+
+          Metoden clear() i klassen LinkedList i Java.
+        */
+        p = null;
+        r = null;
+        antall = 0;
+        endringer++;
+
+        /*2.måte:
+          Lag en løkke som inneholder metodekallet fjern(0) (den første
+          noden fjernes) og som går inntil listen er tom.
+         */
+
     }
 
     //Y
@@ -366,11 +398,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        //8b:
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
+        //8d;
+        /*
+        if (indeksKontroll(indeks, false)) {
+           return new DobbeltLenketListeIterator(indeks);
+        }
+         */
         throw new UnsupportedOperationException();
+
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -386,7 +426,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks){
-            throw new UnsupportedOperationException();
+            //8c:
+            denne = finnNode(indeks);
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
@@ -396,7 +439,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next(){
-            throw new UnsupportedOperationException();
+            // 8a:
+            if (iteratorendringer != endringer) {
+                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer");
+            }
+
+            if (hasNext() == false) {
+                throw new NoSuchElementException("Ikke flere verdier igjen i listen!");
+            }
+
+            fjernOK = true;
+            T midlertidig = denne.verdi;
+            denne = denne.neste;
+
+            return midlertidig;
         }
 
         //y
