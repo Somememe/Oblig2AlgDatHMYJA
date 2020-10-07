@@ -200,17 +200,37 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public boolean fjern(T verdi) {
 
-        boolean slettet = true;
-
-        if(antall == 0) {
-            throw new IndexOutOfBoundsException("Det er ingenting å fjerne fordi" +
-                    " listen er tom");
-
+        if(verdi == null) {
+            return false;
         }
-        
 
+        Node <T> r = hode, p = null;
 
-        return false;
+        while (r!= null) {
+            if (r.verdi.equals(verdi)) break;
+            p = r;
+            r = r.neste;
+        }
+
+       if (r == null) {
+           return false;
+       }
+
+        else if (r == hode) {
+            hode = hode.neste;
+       }
+
+        else {
+            p.neste = r.neste;
+       }
+
+        if (r == hale) {
+            hale = p;
+        }
+        r.verdi = null;
+        r.neste = null;
+        antall--;
+        return true;
     }
 
     @Override
@@ -218,19 +238,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         T returverdi;
 
-        //Node <T> c = hale.neste;
-        //Node <T> b = hale.forrige;
+        if (indeks < 0) {
+            throw new IndexOutOfBoundsException("Indeks kan ikke være mindre enn null");
+        }
 
-        //hode skal fjernes
-        //hode er eneste node
-        // fjerne siste - hale
-        // hvis du skal fjerne en som er midt i lista
+        else if (antall < 1) {
+            throw new IndexOutOfBoundsException("Listen kan ikke være tom");
+        }
+
+        /* else if (indeks < antall) {
+            throw new IndexOutOfBoundsException
+                    ("Kan ikke kalle på en indeks som er større enn antall");
+        }
+         */
 
        if (indeks == 0) {
            returverdi = hode.verdi;
            hode = hode.neste;
+
             if(antall == 1) {
                 hale = null;
+                returverdi = hode.verdi;
             }
 
        }
