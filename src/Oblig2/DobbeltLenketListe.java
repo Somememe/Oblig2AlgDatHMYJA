@@ -303,13 +303,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //y
         @Override
-        public void remove(){
+        public void remove() {
             if(!fjernOK) {
                 throw new IllegalStateException();
             }
             if (endringer != iteratorendringer) {
                 throw new ConcurrentModificationException();
             }
+
             fjernOK = false;
 
             if (antall == 1) {
@@ -317,17 +318,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale = null;
             }
             if (denne == null) {
-                //hale må oppdateres
+                hale = hale.forrige; //hale må oppdateres
+                hale.neste = null;
             }
             if (denne.forrige == hode) {
-                //hode må oppdateres
+                hode = hode.neste; //hode må oppdateres
+                hode.forrige = null;
             }
-           /* if () {
-                //Hvis en node inne i listen skal fjernes (noden denne.forrige), så må pekerne i
-                //nodene på hver side oppdateres.
-            }
-            */
+            else {
 
+            }
+             /* if () {
+             //Hvis en node inne i listen skal fjernes (noden denne.forrige), så må pekerne i
+             //nodene på hver side oppdateres.
+             //video dobbelt lenket liste
+             }
+             */
             //fjerne p
 
             antall--;
@@ -335,7 +341,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer++;
 
             //throw new UnsupportedOperationException();
-        }
+    }
 
     } // class DobbeltLenketListeIterator
 
