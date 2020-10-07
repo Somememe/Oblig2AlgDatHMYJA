@@ -3,16 +3,42 @@ package Oblig2;
 import Oblig2.DobbeltLenketListe;
 import Oblig2.Liste;
 
+import java.util.Comparator;
+
 public class Main {
     public static void main(String[] args) {
+        Character[] c = {'G', 'B', 'C', 'D', 'E', 'F', 'Z', 'H', 'I', 'J', 'A'};
+        DobbeltLenketListe<Character> liste2 = new DobbeltLenketListe<>(c);
+        //System.out.println(liste2.subliste(3,8));
+        //System.out.println(liste2.subliste(5,5));
+        //System.out.println(liste2.subliste(0,11));
+
+        DobbeltLenketListe.sorter(liste2, Comparator.naturalOrder());
+
+        System.out.println(liste2);
+/*
         String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4 ", "indeks 5", "indeks 6"};
 
-        Liste<String> liste = new DobbeltLenketListe<>(a);
+        DobbeltLenketListe<String> liste = new DobbeltLenketListe<>(a);
+
+
+
+        Liste<String> subliste = liste.subliste(0,7);
+
+        System.out.println(subliste);
+
+        for(int i = 0; i<liste.antall(); ++i){
+            System.out.println("Verdi: " + liste.hent(i));
+        }
 
         String[] s = {};
         Liste<String> liste2 = new DobbeltLenketListe<>(s);
 
         System.out.println(liste.hent(2));
+
+        System.out.println(liste.oppdater(6,a[2]));
+
+        System.out.println(a);
 
         System. out .println(liste2. antall () + " " + liste2. tom ());
 
@@ -25,7 +51,6 @@ public class Main {
        /* String[] s1 = {"B"};
         DobbeltLenketListe<String> l1 = new DobbeltLenketListe<>(s1);
         System.out.println(l1.toString() );
-        */
 
        //OPPGAVE 2 A
         String[] s1 = {}, s2 = {"A"}, s3 = {null,"A",null,"B",null};
@@ -44,14 +69,6 @@ public class Main {
             liste3.leggInn(i);
             System.out.println(liste3.toString() + " " + liste3.omvendtString());
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //OPPGAVE 9
-        DobbeltLenketListe<String> liste4 = new DobbeltLenketListe<>(new String[]
-                        {"Birger","Lars","Anders","Bodil","Kari","Per","Berit"});
-        liste4.fjernHvis(navn -> navn.charAt(0) == 'B'); // fjerner navn som starter med B
-        System.out.println(liste4 + " " + liste4.omvendtString());
-        // Utskrift: [Lars, Anders, Kari, Per] [Per, Kari, Anders, Lars]
+*/
     }
 }
