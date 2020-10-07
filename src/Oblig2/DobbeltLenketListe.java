@@ -139,26 +139,99 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "Ikke lov med null-verdier");
-        //indeksKontroll(indeks, true);
+        indeksKontroll(indeks, true);
+        //legge inn verdi på gitt indeks
+        //finne node som er p, bruke finnNode, gir node på indeks indeks
+        // q skal legges inn mellom p og r
+        //q ny node, og r er p.neste
+        Node<T> nyNode = new Node<>(verdi);
+        Node<T> p = finnNode(indeks);
 
-        if (indeks == 0) {
-            hode = new Node<>(verdi, hode, hode);
-            if (antall == 0) {
-                hale = hode;
-            }
-        } else if(indeks == antall) {
-            hale = hale.neste = new Node<>(verdi, null, null);
+        if (antall == 0) {
+            hode = nyNode;
+            hale = nyNode;
+        }
+        else if (indeks == 0) {
+            hode = hode.forrige = new Node<>(verdi, null,hode);
+
+            /*hode = nyNode.neste;
+            hode.forrige = nyNode;
+            nyNode.forrige = null;
+             */
+        }
+        else if (indeks == antall) {
+            hale = hale.neste = new Node<>(verdi, hale,null);
+           /* nyNode.forrige = hale;
+            hale.neste = nyNode;
+            nyNode.neste = null;
+            */
         } else {
-            Node<T> p = hode;
+            //nyNode.neste = p;
+            //nyNode.forrige = p.forrige;
+            p.forrige = p.forrige.neste = new Node<>(verdi, p.forrige, p);
+        }
+        endringer++;
+        antall++;
+
+    }
+        /*
+        Node <T> p = finnNode(indeks);
+        Node <T> q = new Node<>(verdi);
+        Node <T> r = p.neste;
+        if (p == null) {
+            p = hale = q;
+            p.neste = null;
+            hale.neste = null;
+        }
+        if (indeks == 0) {
+            p = hode;
+            q.neste = hode;
+            p.forrige = q;
+            q.forrige = null;
+            p = q;
+        }
+        if (indeks == antall) {
+            p = hale;
+            p.neste = q;
+            q.forrige = p;
+            q.neste = null;
+            q = p;
+        } else {
+            for (int i = 1; i < indeks; i++) {
+                q.neste = r;
+                r.forrige = q;
+                p.neste = q;
+                q.forrige = p;
+            }
+        }
+        antall++;
+        endringer++;
+        }
+
+         */
+
+/*
+        if (indeks == 0) {
+            p.neste = hode;
+            hode = new Node<>(verdi, hode, hode);
+           if (antall == 0) {
+                p.forrige = q.neste;
+           }
+        } else if(indeks == antall) {
+            p.forrige = r.forrige;
+            hale = hode;
+            hale = hale.neste = new Node<>(verdi, p.forrige, r.neste);
+        } else {
             for (int i = 1; i < indeks; i++) {
                 p = p.neste;
-                p.neste = new Node<>(verdi, null, p.neste);
+                p.neste = new Node<>(verdi, q.forrige, p.neste);
             }
             antall++;
             endringer++;
         }
-        //throw new UnsupportedOperationException();
-    }
+ */
+
+
 
     @Override
     public boolean inneholder(T verdi) {
@@ -169,6 +242,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //loope fra start av listen
         //lønner seg å starte på slutten dersom du er over halvveis, og loope bakover
         Node <T> p;
+
         if (indeks > (antall/2)){
             p = hale;
             for (int i = antall; i > indeks+1; i--){
@@ -390,7 +464,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
+
+        //For løkke som starter med første element i liste og stopper etter nest siste element
+        for(int i = 0; i < liste.antall()-1; ++i){
+            T current_maks = liste.hent(i);
+            //Finne maks verdi i intervallet [i, liste.antall) ved hjelp av c.compare
+            for(int j = i + 1; j < liste.antall(); ++j) {
+
+            }
+            //Bytter plass på maks verdi og elementet på plass i.
+        }
     }
 
 } // class DobbeltLenketListe
