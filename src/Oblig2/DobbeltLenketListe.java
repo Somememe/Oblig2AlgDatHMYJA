@@ -221,14 +221,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
-    }
+    public boolean fjern(T verdi) { throw new UnsupportedOperationException(); }
 
     @Override
-    public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
-    }
+    public T fjern(int indeks) { throw new UnsupportedOperationException(); }
 
     @Override
     public void nullstill() {
@@ -253,7 +249,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             p.forrige = null;
             p = q;
         }
-        
+
         /*Til slutt:
           Sett både hode og hale til null, antall til 0 og endringer økes.
 
@@ -268,6 +264,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
           Lag en løkke som inneholder metodekallet fjern(0) (den første
           noden fjernes) og som går inntil listen er tom.
          */
+
     }
 
     //Y
@@ -357,7 +354,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next(){
-            throw new UnsupportedOperationException();
+            // 8a:
+
+            if (iteratorendringer != endringer) {
+                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer");
+            }
+
+            if (hasNext() == false) {
+                throw new NoSuchElementException("Ikke flere verdier igjen i listen!");
+            }
+
+            fjernOK = true;
+            T midlertidig = denne.verdi;
+            denne = denne.neste;
+
+            return midlertidig;
         }
 
         @Override
