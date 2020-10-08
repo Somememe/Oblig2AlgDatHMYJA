@@ -10,3 +10,6 @@ Oppgaven er levert av følgende studenter:
 
 # Arbeidsfordeling
 
+# Kommentar til oppgave 7
+Metode 1 er mest effektiv fordi den går igjennom færre steg. 
+

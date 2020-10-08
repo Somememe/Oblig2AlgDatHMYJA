@@ -316,41 +316,30 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        /*
-        Lag metoden void nullstill(). Den skal «tømme» listen og nulle alt slik at
-        «søppeltømmeren» kan hente alt som ikke lenger brukes. Kod den på to måter
-        og velg den som er mest effektiv (gjør tidsmålinger):
-         */
-
-        // 1.metode:
-        // Får feil på test 7b og 7c.
-
+        // 7:
         Node<T> p = hode;
         Node<T> q;
-        Node<T> r = hale;
 
-        while (p != null)
-        {
+        // 1.metode:
+        while (p != null) {
             q = p.neste;
-            p.verdi = null;
             p.neste = null;
             p.forrige = null;
+            p.verdi = null;
             p = q;
         }
 
-        /*Til slutt:
-          Sett både hode og hale til null, antall til 0 og endringer økes.
-
-          Metoden clear() i klassen LinkedList i Java.
-        */
-        p = null;
-        r = null;
+        hode = null;
+        hale = null;
         antall = 0;
         endringer++;
 
-        /*2.måte:
-          Lag en løkke som inneholder metodekallet fjern(0) (den første
-          noden fjernes) og som går inntil listen er tom.
+        /* 2.metode:
+        while (p != null) {
+            q = p.neste;
+            fjern(0);
+            p = q;
+        }
          */
     }
 
@@ -417,12 +406,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Iterator<T> iterator(int indeks) {
         //8d;
-        /*
-        if (indeksKontroll(indeks, false)) {
-           return new DobbeltLenketListeIterator(indeks);
-        }
-         */
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        return new DobbeltLenketListeIterator(indeks);
+        //throw new UnsupportedOperationException();
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
