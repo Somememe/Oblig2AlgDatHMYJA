@@ -467,12 +467,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //For løkke som starter med første element i liste og stopper etter nest siste element
         for(int i = 0; i < liste.antall()-1; ++i){
-            T current_maks = liste.hent(i);
-            //Finne maks verdi i intervallet [i, liste.antall) ved hjelp av c.compare
+            T current_min = liste.hent(i);
+            int current_index = i;
+            //Finne minste verdi i intervallet [i, liste.antall) ved hjelp av c.compare
             for(int j = i + 1; j < liste.antall(); ++j) {
-
+                /*Sammenligner elementet på plass j med det foreløpig
+                minste elementet og finner minste element i lista*/
+                if(c.compare(liste.hent(j), current_min) < 0){
+                    current_min = liste.hent(j);
+                    current_index = j;
+                }
             }
-            //Bytter plass på maks verdi og elementet på plass i.
+            //Bytter plass på minste verdi og elementet på plass i.
+            T temporary = liste.hent(i);
+            liste.oppdater(i, current_min);
+            liste.oppdater(current_index, temporary);
         }
     }
 

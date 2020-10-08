@@ -2,21 +2,17 @@ package Oblig2;
 
 import Oblig2.DobbeltLenketListe;
 import Oblig2.Liste;
-
 import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
         Character[] c = {'G', 'B', 'C', 'D', 'E', 'F', 'Z', 'H', 'I', 'J', 'A'};
         DobbeltLenketListe<Character> liste2 = new DobbeltLenketListe<>(c);
-        //System.out.println(liste2.subliste(3,8));
-        //System.out.println(liste2.subliste(5,5));
-        //System.out.println(liste2.subliste(0,11));
+        System.out.println(liste2.subliste(3,8));
+        System.out.println(liste2.subliste(5,5));
+        System.out.println(liste2.subliste(0,11));
 
-        DobbeltLenketListe.sorter(liste2, Comparator.naturalOrder());
-
-        System.out.println(liste2);
-/*
+        /*
         String[] a = {"indeks 0", "indeks 1", "indeks 2", "indeks 3", "indeks 4 ", "indeks 5", "indeks 6"};
 
         DobbeltLenketListe<String> liste = new DobbeltLenketListe<>(a);
