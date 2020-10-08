@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
+import java.lang.UnsupportedOperationException;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -123,6 +124,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         antall++;                  // en mer i listen
+        endringer++;
         return true;               // vellykket innlegging
 
         //throw new UnsupportedOperationException();
@@ -257,6 +259,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         r.neste = null;
         antall--;
+        endringer++;
         return true;
     }
 
@@ -408,7 +411,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //8d;
         indeksKontroll(indeks, false);
         return new DobbeltLenketListeIterator(indeks);
-        //throw new UnsupportedOperationException();
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -439,18 +441,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         public T next(){
             // 8a:
             if (iteratorendringer != endringer) {
-                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer");
+                throw new ConcurrentModificationException("Antall iteratorendringer er ikke lik antall endringer!");
+            } else if (hasNext() != true) {
+                throw new NoSuchElementException("Listen er tom, det er ikke flere verdier igjen!");
+            } else {
+                fjernOK = true;
+
+                T tempVerdi = denne.verdi;
+                denne = denne.neste;
+
+                return tempVerdi;
             }
-
-            if (hasNext() == false) {
-                throw new NoSuchElementException("Ikke flere verdier igjen i listen!");
-            }
-
-            fjernOK = true;
-            T midlertidig = denne.verdi;
-            denne = denne.neste;
-
-            return midlertidig;
         }
 
         @Override
