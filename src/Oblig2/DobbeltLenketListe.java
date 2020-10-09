@@ -333,13 +333,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall = 0;
         endringer++;
 
-        /* 2.metode:
+        //2.metode:
+        /*
         while (p != null) {
             q = p.neste;
             fjern(0);
             p = q;
         }
-         */
+        */
     }
 
     //Y

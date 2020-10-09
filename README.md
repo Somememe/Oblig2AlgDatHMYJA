@@ -40,10 +40,15 @@ Oppgave 6:
 
 
 Oppgave 7:
-
+* 1.metode: Bruker en while-løkke som kjører så lenge hodet ikke er satt til null. Brukte hjelpevariablene p og q til å oppdatere plassering i listen, samtidig som jeg slettet forrige node.
+* 2.metode: Bruker en while-løkke som kjører så lenge hodet ikke er satt til null. Bruker hjelpevariabelen q til å "holde" på neste node. Bruker så fjern(0) for å slette noden som er først i lista. Oppdaterer så p (hodet) til å holde på q.  
+* Etter å ha analysert koden så har jeg kommet fram til at metode 1 er mest effektiv fordi det er færre operasjoner metoden må gå igjennom og bruke tid på.
 
 Oppgave 8:
-
+* next()-metoden returnerer midlertidig node-verdi, og flytter samtidig forover til neste node.
+* iterator()-metoden oppretter en instans av iteratorklassen og returnerer denne.
+* DobbeltLenketListeIterator(int indeks) er en konstruktør som setter variabelen "denne" til noden som sendes inn (dvs. indeks/plassering).
+* iterator(int indeks) tester om indeksen er lovlig. Dersom den er det, så sendes den inn i en instans av iteratorklassen, og dette blir så returnert i metoden. 
 
 Oppgave 9:
 
@@ -53,10 +58,3 @@ Oppgave 10:
 * Deretter ble koden som utfører det kommentarene sier skrevet inn.
 * Det er implementert en for-løkke som finner minste element i rekka inne i for-løkka som bytter plass på elementer, siden det ikke var spesifisert noen annen metode for å utføre dette. 
 * Tilslutt bytter den ytre for-løkka plass på elementene, slik at de minste elementene kommer først og de største elementene kommer sist. 
-
-
-# Arbeidsfordeling
-
-# Kommentar til oppgave 7
-Metode 1 er mest effektiv fordi den går igjennom færre steg. 
-
