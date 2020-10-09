@@ -444,37 +444,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (endringer != iteratorendringer) {
                 throw new ConcurrentModificationException();
             }
-
             fjernOK = false;
 
             if (antall == 1) {
                 hode = null;
                 hale = null;
             }
-            if (denne == null) {
+            else if (denne == null) {
                 hale = hale.forrige; //hale må oppdateres
                 hale.neste = null;
             }
-            if (denne.forrige == hode) {
+            else if (denne.forrige == hode) {
                 hode = hode.neste; //hode må oppdateres
                 hode.forrige = null;
             }
             else {
-
+                denne.forrige = denne.forrige.forrige;
+                denne.forrige.neste = denne;
             }
-             /* if () {
-             //Hvis en node inne i listen skal fjernes (noden denne.forrige), så må pekerne i
-             //nodene på hver side oppdateres.
-             //video dobbelt lenket liste
-             }
-             */
-            //fjerne p
-
             antall--;
             endringer++;
             iteratorendringer++;
-
-            //throw new UnsupportedOperationException();
         }
 
     } // class DobbeltLenketListeIterator
