@@ -262,8 +262,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T fjern(int indeks) {
-        //System.out.println("First print:" + toString());
-        //System.out.println("First print backwards:" + omvendtString());
         T returverdi;
 
         if (indeks < 0) {
@@ -284,31 +282,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                hode.forrige = null;
            }
 
-            if(antall == 1) {
-                hale = null;
-            }
+           if(antall == 1) {
+               hale = null;
+           }
+
            endringer++;
            antall --;
            return returverdi;
        }
-
        else {
-
         Node <T> p = finnNode(indeks - 1);
         Node <T> q = p.neste;
         returverdi = q.verdi;
 
            if (q == hale) hale = p; {
                p.neste = q.neste;
-               returverdi = q.verdi;
            }
            if(indeks < antall-1){
                p.neste.forrige = p;
            }else {
                hale.neste = null;
            }
-
        }
+
        endringer++;
        antall --;
        return returverdi;
