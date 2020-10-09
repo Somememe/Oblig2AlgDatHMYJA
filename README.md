@@ -19,7 +19,11 @@ Oppgave 0:
 
 Oppgave 1:
 * Først er den øverste konstruktøren kodet med instansiering av alle instansvariablene for å unngå noen feilmeldinger som ble kastet.
-* Deretter er metodene antall() og tom() kodet. Antall returnerer bare instansvariabelen antall og tom gjør en sjekk på hele lista. 
+* Deretter er metodene antall() og tom() kodet. Antall returnerer bare instansvariabelen antall og tom gjør en sjekk på hele lista.
+
+* Bruker først en Objects.requirenotNull metode for å sjekke at det ikke er en tom tabell
+* Bruker en for-løkke for å opprette konstruktøren til den dobbelt lenkede listen med if-sjekker som sjekker parametertabellen
+* Antall økes
 
 Oppgave 2:
 -Først ble toString() metoden kodet ved å bruke en Stringbuilder hvor elementene (Strengene) skal ligge. Deretter ble String
@@ -47,6 +51,22 @@ Oppgave 5:
 - Første if-setning sjekker om antall == 0, og setter den nye noden til første node. Neste sjekker om indeksen er 0, og setter så noden til første node. Neste sjekker om indeks er lik antall, og om den er det setter den noden til siste/hale-node i lista. Siste setter noden mellom to verdier i lista. 
 
 Oppgave 6:
+ Fjern (verdi)
+ - If-sjekk på starten for å sjekke at det ikke er nullverdier 
+ - Oppretter deretter hjelpekere som brukes i en while-løkke
+ - Bruker while-løkken til å finne verdien som skal fjernes
+ - Peker forbi verdien som er funnet ved hjelp av hjelpepekerne r og q
+ - Sjekker også hvis verdien befinner seg på hode og peker videre på hode.neste, og samme med hale
+ - Antall reduseres og endringer økes
+ - Returner true hvis noden er fjernet 
+ 
+ 
+ Fjern (indeks)
+- Opprettet først en midlertidig T-verdi (returverdi)som jeg skulle plassere noden som skulle fjernes
+- fjern (indeks) sjekker først for indeks feil 
+- Deretter er det implementert If og else sjekker for de forskjellig tilfeller av hvor noden befinner seg.
+- Den plasserer verdien som skal fjernes inn returverdi variabelen og den får riktig verdi etter hvilket tilfellet som gjelder
+- Antall og endringer endres 
 
 
 Oppgave 7:
