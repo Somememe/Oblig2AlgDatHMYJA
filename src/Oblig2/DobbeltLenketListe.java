@@ -76,15 +76,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
-        //hente ut elementer og lage det som en ny lenket liste, returnere en liste
-        //må kanskje lage en ny konstruktør
-        //sette hode-peker, hale-peker og antall
         //sjekke om indekser fra og til er lovlige, om ikke skal det kastes unntak
         fraTilKontroll(antall,fra,til);
         int subAntall = 0;
 
         Liste<T> liste = new DobbeltLenketListe<>();
 
+        //hente ut elementer og lage det som en ny lenket liste, returnere en liste
         for (int i = fra; i < til; i++) {
             liste.leggInn(hent(i));
             subAntall++;
@@ -126,8 +124,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall++;                  // en mer i listen
         endringer++;
         return true;               // vellykket innlegging
-
-        //throw new UnsupportedOperationException();
     }
 
     @Override
@@ -136,8 +132,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         indeksKontroll(indeks, true);
         //legge inn verdi på gitt indeks
         //finne node som er p, bruke finnNode, gir node på indeks indeks
-        // q skal legges inn mellom p og r
-        //q ny node, og r er p.neste
         Node<T> nyNode = new Node<>(verdi);
         Node<T> p = finnNode(indeks);
 
@@ -148,20 +142,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         else if (indeks == 0) {
             hode = hode.forrige = new Node<>(verdi, null,hode);
 
-            /*hode = nyNode.neste;
-            hode.forrige = nyNode;
-            nyNode.forrige = null;
-             */
         }
         else if (indeks == antall) {
             hale = hale.neste = new Node<>(verdi, hale,null);
-           /* nyNode.forrige = hale;
-            hale.neste = nyNode;
-            nyNode.neste = null;
-            */
+
         } else {
-            //nyNode.neste = p;
-            //nyNode.forrige = p.forrige;
             p.forrige = p.forrige.neste = new Node<>(verdi, p.forrige, p);
         }
         endringer++;
