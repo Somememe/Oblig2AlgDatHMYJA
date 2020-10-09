@@ -9,7 +9,7 @@ Oppgaven er levert av følgende studenter:
 * Andrea Bjørge, s344175, s344232@oslomet.no
 
 Notasjoner på koden:
-* Testen til oppgave 6 sender en feilmelding ca. annenhver gang med beskjed om at koden er ineffektiv. 
+* Testen til oppgave 2, 3 og 6 (endrer seg fra gang til gang hvilken oppgave det er) sender en feilmelding ca. annenhver gang med beskjed om at koden er ineffektiv. 
 
 
 Hvordan oppgavene er løst:
