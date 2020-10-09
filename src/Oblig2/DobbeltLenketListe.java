@@ -106,7 +106,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return erTom;
     }
-    
+
     @Override
     public boolean leggInn(T verdi) throws UnsupportedOperationException {
         Objects.requireNonNull(verdi, "Ikke tillatt med null-verdier!");
