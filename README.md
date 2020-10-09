@@ -25,7 +25,10 @@ Oppgave 2:
 
 
 Oppgave 3: 
-- Har laget metodene som er beskrevet i oppgaveteksten. Synes det var vanskelig å forstå hvordan man skulle løse oppgaven, men fikk hjelp av student assistenter på lab. 
+- Først ble den private hjelpemetoden Node <T> finnNode()int indeks) som skal returnere en node med indeks lagd. For å finne ut om letingen etter noden skulle starte fra hode eller hale ble det lagd en if-setning.
+- Så ble metoden for å hente indeks laget: T hent (int indeks). Denne sjekker først om indeks har gyldig verdi. Så bruker den finnNode metoden og returnerer verdien til noden. 
+- Metoden T oppdater (int indeks, T nyverdi) erstatter det som ligger på indeks med nyverdi ved bruk av finnNode metoden. Den returnerer den gamle verdien. 
+- Metoden sublist og fraTilKontroll blir så lagd. fraTilKontroll sjekker om indeksene fra og til er gyldige, og intervall. I sublist brukes en for-loop, og det legges inn elementer i den nye lista, som så returneres. 
 
 Oppgave 4:
 * indeksTil(T verdi) metoden looper gjennom lista med en for løkke og sjekker om verdi eksisterer. 
@@ -34,7 +37,9 @@ Oppgave 4:
 * Metoden inneholder(T verdi) returnerer indeksTil(T verdi) != -1, altså true for 0 og positivt tall og false for -1.
 
 Oppgave 5: 
-- Begynte først på oppgaven, men innså etter å ha sett Andre sin video om obligen at det var best å løse oppgave 3 først. Forsøkte først å løse denne oppgaven alene, men testene failet, og det gikk ikke. Så fikk hjelp av orakel til å gjøre den ferdig.
+- Begynte først på denne oppgaven, men innså etterhvert at det var lurt å starte på oppgave 3 først. 
+- Lager metoden void leggInn(int indeks, T verdi). Det opprettes if/else if-setninger for å legge inn verdier på riktig indeks i listen. 
+- Første if-setning sjekker om antall == 0, og setter den nye noden til første node. Neste sjekker om indeksen er 0, og setter så noden til første node. Neste sjekker om indeks er lik antall, og om den er det setter den noden til siste/hale-node i lista. Siste setter noden mellom to verdier i lista. 
 
 Oppgave 6:
 
