@@ -116,7 +116,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return erTom;
     }
 
-    //Y
     @Override
     public boolean leggInn(T verdi) throws UnsupportedOperationException {
         Objects.requireNonNull(verdi, "Ikke tillatt med null-verdier!");
@@ -341,7 +340,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
-    //Y
     @Override
     public String toString() throws UnsupportedOperationException{
         StringBuilder s = new StringBuilder();
@@ -369,7 +367,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //throw new UnsupportedOperationException();
     }
 
-    //Y
     public String omvendtString() {
         StringBuilder s = new StringBuilder();
 
@@ -455,7 +452,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return midlertidig;
         }
 
-        //y
         @Override
         public void remove() {
             if(!fjernOK) {
@@ -464,38 +460,28 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (endringer != iteratorendringer) {
                 throw new ConcurrentModificationException();
             }
-
             fjernOK = false;
 
             if (antall == 1) {
                 hode = null;
                 hale = null;
             }
-            if (denne == null) {
+            else if (denne == null) {
                 hale = hale.forrige; //hale må oppdateres
                 hale.neste = null;
             }
-            if (denne.forrige == hode) {
+            else if (denne.forrige == hode) {
                 hode = hode.neste; //hode må oppdateres
                 hode.forrige = null;
             }
             else {
-
+            denne.forrige = denne.forrige.forrige;
+            denne.forrige.neste = denne;
             }
-             /* if () {
-             //Hvis en node inne i listen skal fjernes (noden denne.forrige), så må pekerne i
-             //nodene på hver side oppdateres.
-             //video dobbelt lenket liste
-             }
-             */
-            //fjerne p
-
             antall--;
             endringer++;
             iteratorendringer++;
-
-            //throw new UnsupportedOperationException();
-    }
+        }
 
     } // class DobbeltLenketListeIterator
 
