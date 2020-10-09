@@ -22,7 +22,12 @@ Oppgave 1:
 * Deretter er metodene antall() og tom() kodet. Antall returnerer bare instansvariabelen antall og tom gjør en sjekk på hele lista. 
 
 Oppgave 2:
-
+-Først ble toString() metoden kodet ved å bruke en Stringbuilder hvor elementene (Strengene) skal ligge. Deretter ble String
+omvendtString opprettet som gjør det samme, men verdiene skal komme ut i omvendt rekkefølge. Dette skjer ved å endre 
+at hode blir til hale, og at neste blir til forrige.
+-Metoden leggInn(T verdi) sjekker først at det ikke eksisterer null verdier. Den skal legge inn en ny node bakerst i lisen, avhengig
+av om listen er tom fra før eller ikke. dersom listen er tom skal både hale og hode settes til null, hvis listen ikke er tom skal bare hale 
+pekeren endres. 
 
 Oppgave 3: 
 - Først ble den private hjelpemetoden Node <T> finnNode()int indeks) som skal returnere en node med indeks lagd. For å finne ut om letingen etter noden skulle starte fra hode eller hale ble det lagd en if-setning.
@@ -56,7 +61,9 @@ Oppgave 8:
 * iterator(int indeks) tester om indeksen er lovlig. Dersom den er det, så sendes den inn i en instans av iteratorklassen, og dette blir så returnert i metoden. 
 
 Oppgave 9:
-
+-metoden remove() i iteratorklassen skal fjerne verdier. først vil metoden sjekke om det er tillatt å kalle den, hvis det ikke er det vil den kaste en 
+IllegalStateException. dersom endringer og iteratorendringer ikke er like vil det kastes Concurrent-ModificationException. deretter sjekker den om det kun er en verdi i listen som skal fjernes, om det enten er den bakerste eller første 
+verdien i listen som skal fjernes og eller om det er en verdi midt i listen som skal fjernes. til slutt øker endringer og iteratorendringer, mens antall synker. 
 
 Oppgave 10: 
 * Oppgave ble først beskrevet med kommentarer om hva som skulle skje. Disse kommentarene ligger fremdeles i koden. 

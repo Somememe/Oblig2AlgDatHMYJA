@@ -106,8 +106,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return erTom;
     }
-
-    //Y
+    
     @Override
     public boolean leggInn(T verdi) throws UnsupportedOperationException {
         Objects.requireNonNull(verdi, "Ikke tillatt med null-verdier!");
@@ -328,7 +327,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         */
     }
 
-    //Y
     @Override
     public String toString() throws UnsupportedOperationException{
         StringBuilder s = new StringBuilder();
@@ -356,7 +354,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //throw new UnsupportedOperationException();
     }
 
-    //Y
     public String omvendtString() {
         StringBuilder s = new StringBuilder();
 
